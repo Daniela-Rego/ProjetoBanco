@@ -1,0 +1,23 @@
+para gerar uma migration pro typeOrm precisamos 
+ter o script no packger.json "typeorm": "ts-node ./node_modules/typeorm/cli.js"
+e rodar o coamndo no terminal: npm run  typeorm migration:create -nome CreateContayyyzzzzz
+npm run  typeorm migration:run   -- -d src/database/dataSource.ts  
+npm run  typeorm migration:revert   -- -d src/database/dataSource.ts  
+
+
+TYPEORM_MIGRATIONS = src/database/migrations/*.ts
+TYPEORM_MIGRATIONS_DIR =src/database/migrations/
+
+npx tsc
+node dist/server.js
+
+
+
+aula continuando o caso de uso de carros
+
+-consulta a brasilAPI pelo axios
+- se for feriado mostra uma mensagem dizendo que a transferencia so deve ocorrer em dia de semana e nao deixa salvar no banco
+nesse ponto podemos fazer um "includes" se a data esta incluida na brasilApi da erro
+- Fazer com que a transferencia o corra no proximo dia util
+
+https://blog.logrocket.com/how-to-test-code-that-depends-on-external-apis-in-node-js/
