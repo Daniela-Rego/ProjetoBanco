@@ -15,7 +15,7 @@ export class AccountController {
       const contaRepository = new  ContaRepositoryOrm();
         const createConta = new CreateConta(contaRepository);
         console.log("req.body", req.body)
-        await createConta.execute(req.body)
-        res.send('criação de conta ok')
+        const conta = await createConta.execute(req.body)
+        return res.status(201).send('conta criada')
     }
 }

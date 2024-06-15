@@ -108,5 +108,5 @@
   },
   "include":[
     "src/**/*",
-    "src/database/migrations/1713740968951-CreateConta.ts"  ]
+    "src/database/migrations/1713740968951-CreateConta.ts", "exemple.js"  ]
 }

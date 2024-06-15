@@ -6,6 +6,7 @@ export interface ParamsConta {
     idade: number;
     numero_conta: number;
     saldo: number;
+    error?:string;
     
 }
 
@@ -49,6 +50,7 @@ export class Conta {
   set saldo(value: number) {
     this.props.saldo = value;
   }
+ 
   set id (novoId:string){
     this.props.id = novoId;
   }

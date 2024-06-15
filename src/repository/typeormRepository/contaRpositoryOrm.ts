@@ -17,21 +17,29 @@ export class ContaRepositoryOrm implements ContaRepositoryInterface {
         
     }
 
-    async findAccount(numeroConta: number): Promise<Conta|undefined>{
-       const queryfind= `select * from contas_orm where numero_conta =$1;`
+    async findAccount(numeroConta: number): Promise<Conta| undefined>{
+        
+   
+            const queryfind= `select * from contas_orm where numero_conta =$1;`
        const resultFind =await this.repo.query(queryfind,[numeroConta]); 
        //const resultFind = await this.repo.findBy({numero_conta: numeroConta})
-        console.log('resultFind findAccountv3:::',resultFind)
+        console.log('resultFind findAccountv1:::',resultFind)
        
         // quando usamos findBy se tirar o new Conta da erro pq o findBy retorna um objeto
-        if(resultFind.length==0){
+        if(resultFind.length===0){
            // const contaEncontrada = new Conta(resultFind[0]);
-            console.log('resultFind findAccountv1:::')
+            console.log('resultFind findAccountv2:::')
             return undefined;
+            
+            
         }
         
-        console.log('resultFind findAccountv2:::',resultFind)
+        console.log('resultFind findAccountv3:::',resultFind)
         return resultFind[0];
+
+        
+
+       
     }
 
      async update(accountId: number, novoSaldo: number): Promise<void>{

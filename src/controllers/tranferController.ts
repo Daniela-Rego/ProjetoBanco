@@ -6,16 +6,32 @@ import { TransferRepositoryOrm } from "../repository/typeormRepository/transferR
 //import { RequestTransfer } from "../services/request-transfer";
 
 export class TransferController{
-    async createTransfer(req:any, res:any){
-        const transferRepository=  new TransferRepositoryOrm();
-        const contaRepository = new ContaRepositoryOrm();
-        const createTranfer = new CreateTransfer(transferRepository,contaRepository);
-       // const requestTransfer = new RequestTransfer(transferRepository,contaRepository);
-       const createdTransfer = await createTranfer.saveTransfer(req.body);
-        //const transfer= requestTransfer.executeTransfer(createdTransfer,1000,1000) ;
+    
+        async createTransfer(req:any, res:any){
+        try{
+            console.log("TranferController")
+            const transferRepository=  new TransferRepositoryOrm();
+            const contaRepository = new ContaRepositoryOrm();
+            const createTranfer = new CreateTransfer(transferRepository,contaRepository);
+          
+          //const createdTranfer=  await createTranfer.saveTransfer(req.body);
+          await createTranfer.saveTransfer(req.body);
+           console.log('no Controller createdTranfer::');
+           //console.log("typeof::",typeof(createdTranfer));
+           //console.log(JSON.stringify(createdTranfer));
+            return res.status(201).send('transferencia criada')
         
-        return res.status(201).send('transferencia criada')
-       
-  
-    }
+        }catch(error){
+            console.log("entrou catch controller..  ",error);
+            console.log("typeof::",typeof(error));
+            console.log(JSON.stringify(error));
+            return res.status(501).json(error)
+        }
+                
+           
+           
+      
+        } 
+   
+    
 }
