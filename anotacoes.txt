@@ -5,6 +5,11 @@ npm run  typeorm migration:run   -- -d src/database/dataSource.ts
 npm run  typeorm migration:revert   -- -d src/database/dataSource.ts  
 
 
+//atualizei a imagem docker
+docker pull postgress
+//criei um container 
+docker run -d --name db_typeorm -p 5432:5432 -e POSTGRES_PASSWORD=123457 -e POSTGRES_USER=typeor_user  postgres
+
 TYPEORM_MIGRATIONS = src/database/migrations/*.ts
 TYPEORM_MIGRATIONS_DIR =src/database/migrations/
 
