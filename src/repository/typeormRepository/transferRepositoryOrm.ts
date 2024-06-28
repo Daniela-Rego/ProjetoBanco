@@ -18,7 +18,7 @@ export class TransferRepositoryOrm implements TransferRepositoryInterface {
     console.log("Salvando transferência", transfer);
     const date = new Date();
     const id = uuidv4();
-
+    console.log("dentro do save transfer: ",date)
 
     const newTransfer = new Transfer({
       numberAccountSender: transfer.numberAccountSender,
