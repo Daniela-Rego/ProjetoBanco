@@ -5,14 +5,20 @@ export class CreateConta1713740968951 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-            name:"contas_orm2",
+            name:"contas_orm",
             columns:[
                 {
-                   name:"numero_conta",
-                   type: "int",
+                   name:"id",
+                   type: "uuid",
                     isPrimary:true, 
                     isNullable:false   
                 },
+                {
+                    name:"numero_conta",
+                    type: "int",
+                     isPrimary:true, 
+                     isNullable:false   
+                 },
                 {
                     name:"cliente",
                     type: "varchar",
@@ -33,7 +39,7 @@ export class CreateConta1713740968951 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("contas_orm2")
+        await queryRunner.dropTable("contas_orm")
     }
 
 }
