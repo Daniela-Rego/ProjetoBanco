@@ -1,7 +1,8 @@
 import { Conta } from "../../entities/conta";
 import { ContaRepositoryInterface } from "../../interfaces/contaRepositoryInterface";
 import { ContasOrm } from "../../database/entities/ContasOrm";
-import   ConnectionSource   from "../../database/dataSource"
+import   ConnectionSource   from "../../database/dataSource";
+import { ApiError } from '../../helpers/api-errors';
 
 export class ContaRepositoryOrm implements ContaRepositoryInterface {
     private repo = ConnectionSource.getRepository(ContasOrm);
@@ -11,8 +12,9 @@ export class ContaRepositoryOrm implements ContaRepositoryInterface {
          try{
             const resultTypeOrm = await this.repo.save(conta)
             console.log('resultTypeOrm',resultTypeOrm)
-       } catch (erro) {
-        console.log("entrei no catch", erro)
+       } catch (error) {
+        console.log("entrei no catch do repository:: ", error)
+        throw new Error("Erro ao salvar conta")
       }
         
     }

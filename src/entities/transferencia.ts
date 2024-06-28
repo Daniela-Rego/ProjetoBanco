@@ -37,6 +37,6 @@ export class Transfer implements ITransfer {
       return;
     }
 
-    throw new Error('Numero da conta inavlido');
+    throw new Error('Numero da conta invalido');
   }
 }

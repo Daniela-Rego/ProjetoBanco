@@ -1,8 +1,10 @@
+import 'express-async-errors'
 import express from 'express'
-
 import "reflect-metadata";
-import ConnectionSource from "./database/dataSource"
+import ConnectionSource from "./database/dataSource";
+import { errorMiddleware } from './middlewares/error';
 import routes from "./router.js";
+
 
 ConnectionSource.initialize()
   .then(async () => {
@@ -12,6 +14,8 @@ ConnectionSource.initialize()
     app.use(express.json());
 
     app.use(routes)
+    app.use(errorMiddleware)//pode usar um middleware de erro.
+
     app.listen(4001);
 
     console.log("listening on port 4001");

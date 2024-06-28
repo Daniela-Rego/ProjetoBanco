@@ -1,4 +1,5 @@
 import { Conta } from "../entities/conta"
+import { ApiError } from "../helpers/api-errors";
 import { CreatContaRequest } from "../interfaces/contaInterface";
 import {  ContaRepositoryInterface } from "../interfaces/contaRepositoryInterface";
 import { v4 as uuidv4 } from 'uuid';
@@ -18,7 +19,7 @@ export class CreateConta {
         const contaExiste = await this.repository.findAccount(createConta.numero_conta);
       console.log('contaExiste no execute conta',contaExiste);
         if( contaExiste){
-            throw new Error('Numero de conta ja existe');
+            throw new ApiError('Numero de conta ja existe',404);
         }
        
         const resultRepository= await this.repository.save(createConta);

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { ContasOrm } from '../database/entities/ContasOrm';
+import { ApiError } from '../helpers/api-errors';
 export interface ParamsConta {
     id?: string; 
     cliente: string;
@@ -12,19 +13,17 @@ export interface ParamsConta {
 
 export class Conta {
   private props: ParamsConta;
- 
-
 
   constructor(atributos: ParamsConta) {
     console.log('entrei class CONTA', atributos);
+   
     this.verificaConta(atributos.numero_conta);
     this.verificarIdade(atributos.idade);
     this.props = atributos;
+
     if(atributos.id === undefined|| atributos.id === null){
       this.props.id = uuidv4();
     }
-   
-    
    
     console.log('this.props depois de add id::',this.props)
     
@@ -66,5 +65,16 @@ export class Conta {
       throw new Error('Não pode ser menor que 18 anos');
     }
   }
+
+  private isBodyValide(atributos: ParamsConta){
+   const  { cliente,idade,numero_conta,saldo } = atributos
+    
+    if ( !cliente || !idade || numero_conta ||saldo){
+       throw new ApiError("Campo obrigatorio invalido!",404)
+    }
+
+  }
+
+ 
  
 }
