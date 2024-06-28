@@ -14,7 +14,7 @@ const ConnectionSource = new DataSource({
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
   entities: [ContasOrm,TransferenciasOrm],
-  migrations: ['dist/database/migrations/**/*.ts'],
+  migrations: ['dist/database/migrations/**/*.js'],
 });
 
 export  default ConnectionSource;
