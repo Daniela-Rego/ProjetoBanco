@@ -28,11 +28,7 @@ nesse ponto podemos fazer um "includes" se a data esta incluida na brasilApi da 
 https://blog.logrocket.com/how-to-test-code-that-depends-on-external-apis-in-node-js/
 
 
+o docker file esta com o nome editado pq eu teste usar o docker-compose sem o docker file.
+caso precise usar novamente devo voltar o nome e usar o docker-composev1
 
 
-
-
-
-Duvidas 27/06: pq quando subi com o docker-compose up, o container recebeu o nome de projetobanco ? 
-se eu quiser usar o container ja existente como faço ?
-o que é esse volume no docker compose ?

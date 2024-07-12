@@ -16,9 +16,9 @@ ConnectionSource.initialize()
     app.use(routes)
     app.use(errorMiddleware)//pode usar um middleware de erro.
 
-    app.listen(4001);
+    app.listen(3000);
 
-    console.log("listening on port 4001");
+    console.log("listening on port 3000");
   })
   .catch((error) => console.log('deu erro', error));
 

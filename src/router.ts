@@ -7,7 +7,7 @@ import { TransferController } from './controllers/tranferController';
 const routes = Router()
  const accountController =new AccountController();
  const transferController =new TransferController()
- console.log("entrei rotas");
+ console.log("entrei rotas ");
  routes.post('/createConta',accountController.createAccount);  
 
  routes.post('/createTransfer',transferController.createTransfer);

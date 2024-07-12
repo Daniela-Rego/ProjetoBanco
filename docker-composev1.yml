@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   db:
-    container_name: db_typeorm_sem_DockerFile
+    container_name: db_typeorm_compose
     image: postgres
     restart: always
     environment:
@@ -13,10 +13,9 @@ services:
     ports:
      - "9002:5432" 
     volumes: 
-      - db:/postgresql:/var/lib/postgresql/data 
+      - db:/var/lib/postgresql/data 
   app:
-    image: node:20.5.0
-    container_name: api_node
+    build: .
     volumes:
       - .:/usr/src/app
     ports:
@@ -29,11 +28,7 @@ services:
       TYPEORM_USERNAME: typeorm_user_compose
       TYPEORM_PASSWORD: 123457
       TYPEORM_NAME: postgres_compose
-    working_dir: /usr/src/app  
-    ##run: npx tsc
-    command: sh -c "npx tsc && node dist/server.js"
-    tty: true
 volumes:
   db:
-  app:       
-      
+  app:    
+     
